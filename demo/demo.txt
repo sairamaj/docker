@@ -1,3 +1,55 @@
+nuget
+	- what we used to do 3-4 years back
+		- download the zip
+		- check in toolset
+		- reference this in our visual studio project
+		- If another application requires different version then download 
+				- either overwrite existing one (and hope previous one works :)
+				- or check in different directory and used
+	- what we are doing now
+		- download from public nuget server/local nuget server
+			- reference in package.json with specific version
+		- If another application requires different version
+			- reference in package.json with different version
+applications
+	- what we are doing now	
+		- download .msi/setup.exe/zip
+		- install thrugh .msi/setup.exe
+		- run the application
+		- If different version of app needed
+			 - either upgrade to newer version/uninstall existing and install
+	- what we will be doing in coming years
+		- ???????  ( lets see)
+
+Use cases
+	- Bug needs to be reproduced on specific version of COL , test it and fix it	
+		ex: COL 4.3.0 runs windows 2008/iis6/sql2008
+	
+		<blahblah> run <COL430_5678Build>
+		<reproudce it/fix/test>
+		<done>
+		<move on to next task>
+	- Current development
+		- Check-in
+		- <blahblah> run <latestbuild>
+		- test it/ fixt it/ checkin
+	- Deployment to Prouduction
+		- on local machine 
+			- <blahblah> run <build>
+			- test it
+			- approve it
+			- upload to production server
+			- runs just like it in dev (no dependency issues as it was already tested)
+Container technology
+	- The technology makes above use cases real.
+	- The above blahblah is nothing but docker 	
+
+
+
+		
+
+
+
 docker build -t simulator:test .		# creates simulator:test image
 docker images					# shows the images
 docker run -it simulator:test			# creates interactive session (runs node.exe as this was starting in image)
