@@ -1,0 +1,12 @@
+docker build -t simulator:test .		# creates simulator:test image
+docker images					# shows the images
+docker run -it simulator:test			# creates interactive session (runs node.exe as this was starting in image)
+docker run -it simulator:test cmd.exe		# runs cmd.exe in interactive session
+docker run -d -p:8000:8080 simulator:test	# run in background
+docker ps					# shows the running instances
+docker ps -a					# shows all the previous ones too.
+docker inspect <id>				# shows all the properties
+# get the ip address
+curl http://ip:8080				# shows hello world.
+
+
