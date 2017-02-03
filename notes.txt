@@ -1,0 +1,6 @@
+layered
+portable
+if it works on your container it works on server
+can be resource constrained ( memory,cpu etc.,)
+NAT (network address translation, read about it more)
+run multiple containers with different port mappings and can be accessed by specific port on the host which will redirect to specific container.
