@@ -6,3 +6,5 @@ docker inspect <id>	- displays all properties of running instance
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-running-site   - displays IP.
 docker history
 docker diff
+docker run -it -v c:\test:c:\test1 nanoserveranddotnet:test cmd.exe  # share folder (source c:\test will be shared as c:\test1 )
+
