@@ -29,9 +29,9 @@ public static class CustomAccountAppBuilderExtensions
 public static class CustomAccountDefaults
 {
     public const string AuthenticationScheme = "Fiserv";
-    public static readonly string AuthorizationEndpoint = "http://localhost:5001/auth";
-    public static readonly string TokenEndpoint = "http://localhost:5001/token";
-    public static readonly string UserInformationEndpoint = "http://localhost:5001/user";
+    public static readonly string AuthorizationEndpoint = "http://oauth:5001/auth";
+    public static readonly string TokenEndpoint = "http://oauth:5001/token";
+    public static readonly string UserInformationEndpoint = "http://oauth:5001/user";
 }
 
 public class CustomAccountOptions : OAuthOptions

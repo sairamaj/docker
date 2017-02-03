@@ -6,12 +6,18 @@ services:
         dockerfile: oauth.dockerfile
     ports:
       - "5001:5001" 
+    networks:
+      default:
+        ipv4_address: 172.23.2.53
 
   web:
     build:
        context: .
        dockerfile: web.dockerfile
-
+    networks:
+      default:
+        ipv4_address: 172.23.2.54
+       
     ports:
       - "5000:5000"  
     links: 
