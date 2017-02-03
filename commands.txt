@@ -4,3 +4,5 @@ docker ps -a -q	- displays ids
 docker stop $(docker ps -a -q)	- stops all
 docker inspect <id>	- displays all properties of running instance
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-running-site   - displays IP.
+docker history
+docker diff

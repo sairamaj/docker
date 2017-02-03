@@ -1,0 +1,5 @@
+Nano Server is a deeply refactored version of Windows Server with a small footprint and remotely managed installation, optimized for the cloud and a DevOps workflow.  It is designed for fewer patch and update events, faster restarts, better resource utilization and tighter security. Informed directly by our learnings from building and managing some of the world’s largest hyperscale cloud environments, and available in the next version of Windows Server, Nano Server focuses on two scenarios:
+
+Born-in-the-cloud applications – support for multiple programming languages and runtimes. (e.g. C#, Java, Node.js, Python, etc.) running in containers, virtual machines, or on physical servers.
+Microsoft Cloud Platform infrastructure – support for compute clusters running Hyper-V and storage clusters running Scale-out File Serve
+

@@ -27,6 +27,8 @@ Use cases
 	
 		<blahblah> run <COL430_5678Build>
 		<reproudce it/fix/test>
+		<send this something to QA>
+		QA does regression on this something
 		<done>
 		<move on to next task>
 	- Current development
@@ -43,6 +45,21 @@ Use cases
 Container technology
 	- The technology makes above use cases real.
 	- The above blahblah is nothing but docker 	
+- Build manually a simulator 
+- Automate this 
+
+Building application  
+   - 3 tier
+      web app
+	  service using node.js
+	  database
+  web app  
+     nanoserver - 
+	 .net core
+	          docker pull microsoft/dotnet-nightly:nanoserver
+			
+		
+     
 
 
 
@@ -50,7 +67,7 @@ Container technology
 
 
 
-docker build -t simulator:test .		# creates simulator:test image
+docker build -t simulator:test .		# creates simulator:test image ( don't forget the . which is current directory.)
 docker images					# shows the images
 docker run -it simulator:test			# creates interactive session (runs node.exe as this was starting in image)
 docker run -it simulator:test cmd.exe		# runs cmd.exe in interactive session
@@ -58,7 +75,10 @@ docker run -d -p:8000:8080 simulator:test	# run in background
 docker ps					# shows the running instances
 docker ps -a					# shows all the previous ones too.
 docker inspect <id>				# shows all the properties
+docker logs						# show logs
 # get the ip address
 curl http://ip:8080				# shows hello world.
+docker diff
 
-
+Challenges
+    - Identity correct base image
