@@ -1,25 +1,43 @@
-nuget
-	- what we used to do 3-4 years back
-		- download the zip
-		- check in toolset
-		- reference this in our visual studio project
-		- If another application requires different version then download 
-				- either overwrite existing one (and hope previous one works :)
-				- or check in different directory and used
-	- what we are doing now
-		- download from public nuget server/local nuget server
-			- reference in package.json with specific version
-		- If another application requires different version
-			- reference in package.json with different version
-applications
-	- what we are doing now	
-		- download .msi/setup.exe/zip
-		- install thrugh .msi/setup.exe
-		- run the application
-		- If different version of app needed
-			 - either upgrade to newer version/uninstall existing and install
-	- what we will be doing in coming years
-		- ???????  ( lets see)
+
+- Lets build web app manually
+- will show how to automate 
+- to build app we need
+	a machine with .net core
+- lets to docker hub where public repositories exits
+	https://hub.docker.com
+	search for "microsoft nanoserver dotnet"
+	you will see the image  
+		docker pull microsoft/dotnet-nightly:nanoserver
+	(this contains what we need)
+	see all the iamges
+		docker images
+	lets run this image	
+		- we have 2 options
+			- first create and then starting	
+			- or directly run (which does both)
+		lets run
+			docker run <imageid>
+				what happend here is it ran and exited immeidately
+				( you can see docker ps -a)
+		lets run interactively
+			docker run -it <imageid>
+		lets explore this file system, registry
+			do with files
+				- create directory
+				- create a file (copy con hello.txt)
+			cd hklm:
+			cd SOFTWARE
+			mkdir ContainerTest
+			do same thing and see the differences of registry both in 
+			container and host.
+		lets explore network
+			- ipconfig
+				it has its own ipconfig
+				
+
+
+
+
 
 Use cases
 	- Bug needs to be reproduced on specific version of COL , test it and fix it	
