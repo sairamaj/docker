@@ -33,11 +33,50 @@
 		lets explore network
 			- ipconfig
 				it has its own ipconfig
+		lets build the application ( this is not usually but wanted to show what we can do with containers.)
+			docker run -it -p:5000:5000 e2 cmd.exe	
+				md c:\test\web
+				dotnet new -t web
+				dotnet restore
+				dotnet run
+
+				lets test whether web server is runing or not: in another shell
+					docker exec -it <id> cmd.exe 
+					run powershell
+						Invoke-WebRequest -Uri http://localhost:5000
 				
-
-
-
-
+				set ASPNETCORE_URLS=http://*:5000
+				docker inspect <id> | sls ipadd
+				view the page:
+					http://ip:5000 
+		Lets how we can share 
+			docker run -it -p:5000:5000 -v c:\testing:c:\hosttesting e2
+			md c:\test\web
+			dotnet new -t web
+			dotnet restore
+			copy \hosttesting
+			copy acco*.cs controller
+			delete accountcontorller.cs in root
+			dotnet restore
+			dotnet run
+		
+			docker inspect <id> | sls ipadd
+			http://<ipadd>:5000
+				Login
+				Fiserv link should be there.
+			
+		If we exit now everything is lost as the container is readonly
+		commit these changes ( this will save the image and may take some time.)
+				docker container commit db mydotnetweb:test  ( skip as it may take some time.)
+		Lets automate this	
+				docker build -f .\web.dockerfile -t testing:test .
+		
+		Lets build OAuth container in automated way
+		Lets run the 2 containers with single command
+			docker-compose up
+			docker network ls
+			docker network inspect <id>
+			open chrome and show the login Fiserv
 
 Use cases
 	- Bug needs to be reproduced on specific version of COL , test it and fix it	
