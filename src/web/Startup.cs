@@ -1,8 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,13 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WebApplication.Data;
-using WebApplication.Models;
-using WebApplication.Services;
+using web.Data;
+using web.Models;
+using web.Services;
 
-
-
-namespace WebApplication
+namespace web
 {
     public class Startup
     {
@@ -24,13 +21,13 @@ namespace WebApplication
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
             {
                 // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
+                builder.AddUserSecrets<Startup>();
             }
 
             builder.AddEnvironmentVariables();
@@ -78,8 +75,8 @@ namespace WebApplication
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
-            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
+            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+           app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
             {
                 ClientId = "clientidhere",
                 ClientSecret = "clientsecret"
@@ -90,8 +87,7 @@ namespace WebApplication
                 ClientId = "clientidhere",
                 ClientSecret = "clientsecret"
             });
-
-            //app.UseOAuthAuthentication(Startup.GetOptions());
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -101,6 +97,3 @@ namespace WebApplication
         }
     }
 }
-
-
-// https://long2know.com/2016/07/asp-net-core-oauth-middleware/

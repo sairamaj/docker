@@ -13,7 +13,7 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http.Authentication;
 using Newtonsoft.Json.Linq;
-using WebApplication;
+
 public static class CustomAccountAppBuilderExtensions
 {
     public static IApplicationBuilder UseFiservAccountAuthentication(this IApplicationBuilder app, CustomAccountOptions option)
