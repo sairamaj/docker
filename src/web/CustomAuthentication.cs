@@ -16,7 +16,7 @@ using Newtonsoft.Json.Linq;
 
 public static class CustomAccountAppBuilderExtensions
 {
-    public static IApplicationBuilder UseFiservAccountAuthentication(this IApplicationBuilder app, CustomAccountOptions option)
+    public static IApplicationBuilder UseCustomAccountAuthentication(this IApplicationBuilder app, CustomAccountOptions option)
     {
         return UseMiddlewareExtensions.UseMiddleware<CustomAccountMiddleware>(app, new object[]
         {
@@ -28,7 +28,7 @@ public static class CustomAccountAppBuilderExtensions
 
 public static class CustomAccountDefaults
 {
-    public const string AuthenticationScheme = "Fiserv";
+    public const string AuthenticationScheme = "CustomDemo";
     public static readonly string AuthorizationEndpoint = "http://oauth:5001/auth";
     public static readonly string TokenEndpoint = "http://oauth:5001/token";
     public static readonly string UserInformationEndpoint = "http://oauth:5001/user";
@@ -40,7 +40,7 @@ public class CustomAccountOptions : OAuthOptions
     {
         AuthenticationScheme = CustomAccountDefaults.AuthenticationScheme;
         DisplayName = AuthenticationScheme;
-        CallbackPath = new PathString("/signin-fiserv");
+        CallbackPath = new PathString("/signin-custom");
         AuthorizationEndpoint = CustomAccountDefaults.AuthorizationEndpoint;
         TokenEndpoint = CustomAccountDefaults.TokenEndpoint;
         UserInformationEndpoint = CustomAccountDefaults.UserInformationEndpoint;
@@ -106,12 +106,12 @@ public class CustomAccountMiddleware : OAuthMiddleware<CustomAccountOptions>
             if (!string.IsNullOrEmpty(identifier))
             {
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, identifier, ClaimValueTypes.String, Options.ClaimsIssuer));
-                identity.AddClaim(new Claim("urn:fiservaccount:id", identifier, ClaimValueTypes.String, Options.ClaimsIssuer));
+                identity.AddClaim(new Claim("urn:customaccount:id", identifier, ClaimValueTypes.String, Options.ClaimsIssuer));
             }
             else
             {
                 identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, identifier, ClaimValueTypes.String, Options.ClaimsIssuer));
-                identity.AddClaim(new Claim("urn:fiservaccount:id", "sai", ClaimValueTypes.String, Options.ClaimsIssuer));
+                identity.AddClaim(new Claim("urn:customaccount:id", "sai", ClaimValueTypes.String, Options.ClaimsIssuer));
             }
             
             var email = CustomAcocuntHelper.GetEmail(payload);

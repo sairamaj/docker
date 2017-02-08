@@ -82,7 +82,7 @@ namespace web
                 ClientSecret = "clientsecret"
             });
 
-            app.UseFiservAccountAuthentication(new CustomAccountOptions()
+            app.UseCustomAccountAuthentication(new CustomAccountOptions()
             {
                 ClientId = "clientidhere",
                 ClientSecret = "clientsecret"
