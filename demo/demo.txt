@@ -36,7 +36,7 @@
 		lets build the application ( this is not usually but wanted to show what we can do with containers.)
 			docker run -it -p:5000:5000 e2 cmd.exe	
 				md c:\test\web
-				dotnet new -t web
+				dotnet new mvc --auth Individual
 				dotnet restore
 				dotnet run
 
@@ -70,6 +70,7 @@
 				docker container commit db mydotnetweb:test  ( skip as it may take some time.)
 		Lets automate this	
 				docker build -f .\web.dockerfile -t testing:test .
+		docker run -d <>
 		
 		Lets build OAuth container in automated way
 		Lets run the 2 containers with single command
