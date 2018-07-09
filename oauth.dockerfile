@@ -14,7 +14,7 @@ RUN powershell -Command \
 RUN mkdir c:\oauthserver
 
 # copy src from host to simulator
-copy oauthserver\\src C:\oauthserver
+copy src/oauthserver C:/oauthserver
 
 # make simulator as working directory
 WORKDIR c:\\oauthserver

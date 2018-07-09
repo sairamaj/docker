@@ -13,16 +13,16 @@ WORKDIR c:\\testing\\web
 
 
 # download the packages in container
-RUN dotnet new -t web
+RUN dotnet new mvc
 # copy the modified files for this demo. 
-COPY web\\src\\AccountController.cs c:/testing/web/Controllers
-COPY web\\src\\project.json c:/testing/web
-COPY web\\src\\Startup.cs c:/testing/web
-COPY web\\src\\Custom.cs c:/testing/web
-COPY web\\src\\CustomLogger.cs c:/testing/web
+COPY src\\web\\AccountController.cs c:/testing/web/Controllers
+# COPY src\\web\\project.json c:/testing/web
+COPY src\\web\\Startup.cs c:/testing/web
+# COPY src\\web\\Custom.cs c:/testing/web
+COPY src\\web\\CustomLogger.cs c:/testing/web
 
 RUN dotnet restore
-RUN dotnet ef database update
+
 
 EXPOSE 5000
 # make starting command as npm
